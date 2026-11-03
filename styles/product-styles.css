@@ -1,0 +1,87 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html {
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+body {
+  padding: 5rem 5rem 10rem;
+  line-height: 1.7;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #555;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #9be15d, #00e3ae);
+}
+h1 {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 6rem;
+  text-align: center;
+  position: relative;
+  color: white;
+  word-spacing: 3px;
+  transform: skewY(-5deg);
+}
+h1::before {
+  content: "";
+  display: block;
+  height: 65%;
+  width: 49%;
+  position: absolute;
+  top: 105%;
+  left: 50%;
+  background: linear-gradient((to bottom, #9be15d, #00e3ae));
+  opacity: 0.8;
+  z-index: -1;
+  transform: skewY(370deg) translate(-50%, -50%);
+}
+.container {
+  width: 95rem;
+  margin: 0 auto;
+}
+.product {
+  width: 60rem;
+  margin: 0 auto;
+  margin-top: 9rem;
+  background: white;
+  box-shadow: 0 3rem 6rem 1rem rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+.product_hero {
+  position: relative;
+  height: 22rem;
+  overflow: hidden;
+}
+.product_hero::before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to left bottom, #9be15d, #00e3ae);
+  opacity: 0.5;
+  z-index: 100;
+}
+.product_emoji {
+  font-size: 15rem;
+  position: absolute;
+}
+.product_emoji--1 {
+  top: -4rem;
+  left: -2rem;
+  z-index: 10;
+}
+.product_emoji--2 {
+  top: -6rem;
+  left: 9rem;
+}
+.product_emoji--3 {
+  top: -4rem;
+  right: 15rem;
+}
