@@ -85,3 +85,130 @@ h1::before {
   top: -4rem;
   right: 15rem;
 }
+.product_emoji--4 {
+  top: -5rem;
+  right: 2rem;
+  z-index: 10;
+}
+.product_emoji--5 {
+  bottom: -9rem;
+  left: 18rem;
+}
+.product_emoji--6 {
+  bottom: -8rem;
+  left: 5rem;
+}
+.product_emoji--7 {
+  bottom: -12rem;
+  right: 14rem;
+}
+.product_emoji--8 {
+  bottom: -8rem;
+  right: -2rem;
+}
+.product_emoji--9 {
+  top: -7rem;
+  left: 19rem;
+}
+.product_organic {
+  position: absolute;
+  top: -4rem;
+  right: -4rem;
+  z-index: 1000;
+  width: 11rem;
+  height: 11rem;
+  background-image: linear-gradient(to bottom, #9be15d, #00e3ae);
+  border-radius: 50%;
+  transform: rotate(15deg);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product_organic h5 {
+  font-weight: 900;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  color: #fff;
+}
+.product_back:link,
+.product_back:visited {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  z-index: 1000;
+  color: #555;
+  background-color: #fff;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+  border-radius: 100rem;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+}
+.product_back:hover,
+.product_back:active {
+  background-color: #79e17b;
+}
+.product_name {
+  background: linear-gradient(to bottom, #9be15d, #00e3ae);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 4rem;
+  padding: 1rem;
+  color: #fff;
+  text-align: center;
+  word-spacing: 2px;
+}
+.product_details {
+  background-color: #eee;
+  padding: 4rem 6rem;
+  font-size: 1.9rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1.5rem;
+}
+.emoji-left {
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+.product_description {
+  padding: 5rem 6rem;
+  font-size: 1.6rem;
+  line-height: 1.8;
+}
+.product_link:link,
+.product_link:visited {
+  display: block;
+  background-color: #79e17b;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem;
+  text-align: center;
+  transform: scale(1.07) skewX(-20deg);
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+.product_link:hover,
+.product_link:active {
+  background-color: #9be15d;
+  transform: scale(1.1), skewX(-20deg);
+}
+.product_link span {
+  transform: skewX(20deg);
+}
+.emoji-right {
+  font-size: 2rem;
+  margin-left: 1rem;
+}
+.not-organic {
+  display: none;
+}
