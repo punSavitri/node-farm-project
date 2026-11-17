@@ -2,6 +2,22 @@ const fs = require("fs");
 const http = require("http");
 const url = require("url");
 
+//replaceTemplate function to replace placeholder with data
+const replaceTemplate = (temp, product) => {
+  let output = temp.replace(/{%productname%}/g, product.productName);
+  output = output.replace(/{%image%}/g, product.image);
+  output = output.replace(/{%price%}/g, product.price);
+  output = output.replace(/{%productfrom%}/g, product.from);
+  output = output.replace(/{%productnutrientsname%}/g, product.nutrients);
+  output = output.replace(/{%quantity%}/g, product.quantity);
+  output = output.replace(/{%description%}/g, product.description);
+  output = output.replace(/{%id%}/g, product.id);
+
+  //condition
+  if (!product.organic)
+    output = output.replace(/{%not_organic%}/g, "not-organic");
+  return output;
+};
 //read and load the templates card, overview and product
 const tempOverview = fs.readFileSync(
   `${__dirname}/templates/template-overview.html`,
@@ -25,7 +41,14 @@ const server = http.createServer((req, res) => {
   //overview page
   if (pathName === "/" || pathName === "/overview") {
     res.writeHead(200, { "Content-type": "text/html" });
-    res.end(tempOverview);
+    //loop through dataObj to replace a placeholder with actual data
+    const cardsHTML = dataObj
+      .map((el) => replaceTemplate(tempCard, el))
+      .join("");
+    //console.log(cardsHTML);
+    const output = tempOverview.replace("{%product-cards%}", cardsHTML);
+    res.end(output);
+    //added routes to styles template-overview page
   } else if (pathName === "/styles/overview-styles.css") {
     const css = fs.readFileSync(
       `${__dirname}/styles/overview-styles.css`,
@@ -33,6 +56,7 @@ const server = http.createServer((req, res) => {
     );
     res.writeHead(200, { "Content-type": "text/css" });
     res.end(css);
+
     //product page
   } else if (pathName === "/product") {
     res.end("This is product page");
