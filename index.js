@@ -1,7 +1,7 @@
 const fs = require("fs");
 const http = require("http");
 const url = require("url");
-const replaceTemplate = require("./moduels/replaceTemplate");
+const replaceTemplate = require("./modules/replaceTemplate");
 
 //read and load the templates card, overview and product
 const tempOverview = fs.readFileSync(
