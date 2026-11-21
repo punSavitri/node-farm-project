@@ -1,23 +1,8 @@
 const fs = require("fs");
 const http = require("http");
 const url = require("url");
+const replaceTemplate = require("./moduels/replaceTemplate");
 
-//replaceTemplate function to replace placeholder with data
-const replaceTemplate = (temp, product) => {
-  let output = temp.replace(/{%productname%}/g, product.productName);
-  output = output.replace(/{%image%}/g, product.image);
-  output = output.replace(/{%price%}/g, product.price);
-  output = output.replace(/{%productfrom%}/g, product.from);
-  output = output.replace(/{%productnutrientsname%}/g, product.nutrients);
-  output = output.replace(/{%quantity%}/g, product.quantity);
-  output = output.replace(/{%description%}/g, product.description);
-  output = output.replace(/{%id%}/g, product.id);
-
-  //condition
-  if (!product.organic)
-    output = output.replace(/{%not_organic%}/g, "not-organic");
-  return output;
-};
 //read and load the templates card, overview and product
 const tempOverview = fs.readFileSync(
   `${__dirname}/templates/template-overview.html`,
