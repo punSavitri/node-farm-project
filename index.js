@@ -35,11 +35,14 @@ const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8");
 const dataObj = JSON.parse(data);
 //create simple web server
 const server = http.createServer((req, res) => {
+  //console.log(req.url);
+  //console.log(url.parse(req.url, true));
   //setting up the routes
-  const pathName = req.url;
+  //parsing variable from URLs
+  const { query, pathname } = url.parse(req.url, true);
 
   //overview page
-  if (pathName === "/" || pathName === "/overview") {
+  if (pathname === "/" || pathname === "/overview") {
     res.writeHead(200, { "Content-type": "text/html" });
     //loop through dataObj to replace a placeholder with actual data
     const cardsHTML = dataObj
@@ -49,7 +52,7 @@ const server = http.createServer((req, res) => {
     const output = tempOverview.replace("{%product-cards%}", cardsHTML);
     res.end(output);
     //added routes to styles template-overview page
-  } else if (pathName === "/styles/overview-styles.css") {
+  } else if (pathname === "/styles/overview-styles.css") {
     const css = fs.readFileSync(
       `${__dirname}/styles/overview-styles.css`,
       "utf-8",
@@ -58,10 +61,24 @@ const server = http.createServer((req, res) => {
     res.end(css);
 
     //product page
-  } else if (pathName === "/product") {
-    res.end("This is product page");
-    //api page
-  } else if (pathName === "/api") {
+  } else if (pathname === "/product") {
+    //console.log(query);
+    res.writeHead(200, { "Content-type": "text/html" });
+    const product = dataObj[query.id];
+    const output = replaceTemplate(tempProduct, product);
+    res.end(output);
+
+    //set up routes to style product page
+  } else if (pathname === "/styles/product-styles.css") {
+    const css = fs.readFileSync(
+      `${__dirname}/styles/product-styles.css`,
+      "utf-8",
+    );
+    res.writeHead(200, { "Content-type": "text/css" });
+    res.end(css);
+
+    //API Routes
+  } else if (pathname === "/api") {
     res.writeHead(200, { "Content-type": "application/json" });
     res.end(data);
     //page not found
